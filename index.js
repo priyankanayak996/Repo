@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const joi = require('@hapi/joi');
 const api = require('./api');
 
 // set up express app
