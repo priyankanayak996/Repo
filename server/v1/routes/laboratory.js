@@ -13,7 +13,6 @@ const laboratorySchema = new Schema({
   },
   id: {
     type: Number,
-
   },
   location: {
     type: String,

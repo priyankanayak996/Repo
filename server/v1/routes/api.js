@@ -1,12 +1,9 @@
 const express = require('express');
 
 const router = express.Router();
-const User = require('./routes/User');
-const {
-  addUserValidation
-} = require('./validation/user.validation');
-const laboratory = require('./routes/lab.laboratory');
-
+const User = require('../model/User');
+const { addUserValidation } = require('../validation/user.validation');
+const laboratory = require('./laboratory');
 
 router.get('/user', (req, res) => {
   res.send({
@@ -32,13 +29,9 @@ router.get('/lab', (req, res) => {
   });
 });
 
-router.post('/lab', addUserValidation, (req, res) => {
+router.post('/lab', (req, res) => {
   laboratory.create(req.body).then((user) => {
     res.send(user);
-
   });
 });
-
-
-
 module.exports = router;

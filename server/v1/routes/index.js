@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const api = require('../routes/api');
+const api = require('./api');
 
 // set up express app
 const app = express();
@@ -20,4 +20,4 @@ app.listen(process.env.port || 4000, () => {
 
 app.get('/user', (res, req) => {
 
-})
+});
