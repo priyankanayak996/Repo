@@ -13,12 +13,11 @@ const laboratorySchema = new Schema({
   },
   id: {
     type: Number,
+    unique: true,
   },
   location: {
     type: String,
 
   },
 });
-
-const laboratory = mongoose.model('lab', laboratorySchema);
-module.exports = laboratory;
+module.exports = mongoose.model('laboratory', laboratorySchema);

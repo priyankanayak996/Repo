@@ -17,7 +17,3 @@ app.use('/api', api);
 app.listen(process.env.port || 4000, () => {
   console.log('now listening for request');
 });
-
-app.get('/user', (res, req) => {
-
-});
