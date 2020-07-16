@@ -1,16 +1,19 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-
-const api = require('./server/v1/routes/api');
+const mongoose = require('mongoose');
+const api = require('./api');
 
 // set up express app
 const app = express();
 
+mongoose.connect('mongodb://localhost/user');
+mongoose.Promise = global.Promise;
+
 app.use(bodyParser.json());
 
-app.use('/v1/', api);
+app.use('/api', api);
 
 // listen for request
-app.listen(process.env.port || 3001, () => {
+app.listen(process.env.port || 4000, () => {
   console.log('now listening for request');
 });
