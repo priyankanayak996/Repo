@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
-const User = require('../model/User');
+const internsTraining = require('../model/internTraining');
 
 const {
   addUserValidation,
@@ -10,7 +10,7 @@ const {
 
 const Laboratory = require('./laboratory');
 
-router.get('/user', (req, res) => {
+router.get('/internTraining', (req, res) => {
   res.send({
 
     type: 'GET',
@@ -18,9 +18,9 @@ router.get('/user', (req, res) => {
   });
 });
 
-router.post('/user', addUserValidation, (req, res) => {
-  User.create(req.body).then((user) => {
-    res.send(user);
+router.post('/internTraining', addUserValidation, (req, res) => {
+  internsTraining.create(req.body).then((internTraining) => {
+    res.send(internTraining);
 
     /* console.log(req.body);
 

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const UserSchema = new Schema({
+const internTrainingSchema = new Schema({
   first_name: {
     type: String,
     required: [true, 'Name field is required'],
@@ -21,5 +21,5 @@ const UserSchema = new Schema({
   },
 });
 
-const User = mongoose.model('user', UserSchema);
+const User = mongoose.model('training', internTrainingSchema);
 module.exports = User;
