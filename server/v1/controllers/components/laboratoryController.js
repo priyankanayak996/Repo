@@ -1,82 +1,33 @@
-const Laboratory = require('../../model/components/laboratory');
+const LabServices = require('../../services/components/laboratoryService');
+require('../../model/components/laboratory');
 
-module.exports.getLaboratory = async (req, res) => {
-  try {
-    const labs = await Laboratory.find();
+// module.exports.getLaboratory = async (req, res) => {
 
-    res.json(labs);
-  } catch (err) {
-    res.send(err);
-  }
-};
+//   const [error, labInfo] = LabServices.getLaboratoryService(req.headers);
+
+// };
 module.exports.postLaboratory = async (req, res) => {
-  const lab = new Laboratory({
+  const params = req.body;
 
-    first_name: req.body.first_name,
-
-    last_name: req.body.last_name,
-
-    id: req.body.id,
-
-    location: req.body.location,
+  const [error, labInfo] = await LabServices.postLaboratoryService(params);
+  if (error) {
+    res.status(500);
+  }
+  res.send(labInfo, {
+    body: params.labInfo,
 
   });
-
-  try {
-    const saveLab = await lab.save();
-
-    res.json(saveLab);
-  } catch (err) {
-    res.send(err);
-  }
 };
 
-module.exports.putLaboratory = async (req, res) => {
-  try {
-    const updateLab = await Laboratory.findByIdAndDelete({
+// module.exports.putLaboratory = async (req, res) => {
+//   const [] = LabServices.putLaboratoryService(req.headers);
+// };
 
-      _id: req.params.id,
+// module.exports.deleteLaboratory = async (req, res) => {
+//   const [] = LabServices.deleteLaboratoryService(req.headers);
+// };
 
-    });
+// module.exports.patchLaboratory = async (req, res) => {
+//   const [] = LabServices.patchLaboratoryService(req.headers);
 
-    res.json(updateLab);
-  } catch (err) {
-    res.json(err);
-  }
-};
-
-module.exports.deleteLaboratory = async (req, res) => {
-  try {
-    const removedLab = await Laboratory.remove({
-
-      _id: req.params.id,
-
-    });
-
-    res.json(removedLab);
-  } catch (err) {
-    res.json(err);
-  }
-};
-
-module.exports.patchLaboratory = async (req, res) => {
-  try {
-    const updatedLab = await Laboratory.updateOne({
-
-      _id: req.params.id,
-
-    }, {
-
-      $set: {
-
-        first_name: req.body.first_name,
-
-      },
-
-    });
-
-    res.json(updatedLab);
-  } catch (err) {
-    res.json(err);
-  }
-};
+// };
