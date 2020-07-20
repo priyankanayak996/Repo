@@ -3,19 +3,22 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const laboratorySchema = new Schema({
-  first_name: {
+  lab_name: {
     type: String,
     required: [true, 'Name field is required'],
   },
-  last_name: {
+  lab_location: {
     type: String,
-    required: [true, 'Name field is required'],
   },
-  id: {
-    type: Number,
-    unique: true,
+  organisation: {
+    type: String,
+
   },
-  location: {
+  department: {
+    type: String,
+
+  },
+  lab_type: {
     type: String,
 
   },
